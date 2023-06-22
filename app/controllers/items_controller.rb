@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :redirect_to_show, only: [:edit, :update, :destroy]
   
+
   def index
     @items = Item.all.order(created_at: :desc)
   end
@@ -35,7 +36,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy
+    if @item.order.destroy
       return redirect_to root_path
     else
       render 'show'
@@ -65,5 +66,7 @@ class ItemsController < ApplicationController
   def redirect_to_show
     return redirect_to root_path if current_user.id != @item.user.id
   end
+  
+  
 
 end
