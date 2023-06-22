@@ -24,7 +24,7 @@
         <%= @item.shipping_charge.charge %>
       </span>
     </div>
-    <%# ログインしている、かつ、購入済みの場合、条件分岐 %>
+    <% if user_signed_in? %>
       <% if user_signed_in? && current_user.id == @item.user_id %>
         <%= link_to '商品の編集', edit_item_path(@item), method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
@@ -32,7 +32,7 @@
       <% else %>
         <%= link_to '購入画面に進む',item_orders_path(@item), class:"item-red-btn"%>
       <% end %>   
-    <%# //ログインしている、かつ、購入済みの場合、条件分岐 %>
+    <% end %>
     <div class="item-explain-box">
       <span><%= @item.description %></span>
     </div>
