@@ -40,4 +40,5 @@ class OrdersController < ApplicationController
       redirect_to root_path, alert: "You cannot purchase your own item."
     end
   end
+
 end
