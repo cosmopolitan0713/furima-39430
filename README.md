@@ -49,14 +49,15 @@
 
 ## addressテーブル 
 <!-- 発送先情報 -->
-| Column        | Type   | Option      | 
-| ------------- | ------ | ----------- | 
-| postal_code   | string | null: false | 
-| prefecture    | string | null: false | 
-| city          | string | null: false | 
-| street        | string | null: false | 
-| building_name | string |             | 
-| phone_number  | string | null: false | 
+| Column        | Type       | Option                         | 
+| ------------- | ------     | ------------------------------ | 
+| postal_code   | string     | null: false                    | 
+| prefecture    | string     | null: false                    | 
+| city          | string     | null: false                    | 
+| street        | string     | null: false                    | 
+| building_name | string     |                                |  
+| phone_number  | string     | null: false                    | 
+| orders        | references | null: false, foreign_key: true | 
 
 ### Association
 - belongs_to :order
