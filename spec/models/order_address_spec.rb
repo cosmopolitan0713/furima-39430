@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe OrderAddress, type: :model do
   describe '発送先情報の保存' do
     before do
-      order = FactoryBot.create(:order_address) 
+      order = FactoryBot.create(:order_address)
       @order_address = FactoryBot.build(:order_address, order_id: order.id)
     end
 
     context '内容に問題ない場合' do
       it 'すべての値が正しく入力されていれば保存できること' do
-      end  
+      end
       it 'buildingは空でも保存できること' do
       end
     end

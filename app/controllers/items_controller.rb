@@ -13,14 +13,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      return redirect_to root_path
-    else
-      render 'new'
-    end
+    return redirect_to root_path if @item.save
+
+    render 'new'
   end
 
-  def show    
+  def show
   end
 
   def edit
@@ -28,21 +26,17 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
-      return redirect_to item_path(@item)
-    else
-      render 'edit'
-    end
+    return redirect_to item_path(@item) if @item.update(item_params)
+
+    render 'edit'
   end
 
   def destroy
-    if @item.destroy
-      return redirect_to root_path
-    else
-      render 'show'
-    end
+    return redirect_to root_path if @item.destroy
+
+    render 'show'
   end
-  
+
   private
 
   def item_params
@@ -66,11 +60,10 @@ class ItemsController < ApplicationController
   def redirect_to_show
     return redirect_to root_path if current_user.id != @item.user.id
   end
-  
-  def redirect_if_edit
-    if user_signed_in? && current_user.id == @item.user_id && @item.order.present?
-      redirect_to root_path
-    end
-  end
 
+  def redirect_if_edit
+    return unless user_signed_in? && current_user.id == @item.user_id && @item.order.present?
+
+    redirect_to root_path
+  end
 end

@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:new]
-  before_action :redirect_if_seller, only: [:index,:new, :create]
-  before_action :set_public_key, only: [:index, :new,:create]
+  before_action :redirect_if_seller, only: [:index, :new, :create]
+  before_action :set_public_key, only: [:index, :new, :create]
   def index
     @item = Item.find(params[:item_id])
     if @item.user == current_user || @item.order.present?
@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
       @order_address = OrderAddress.new
     end
   end
-  
+
   def new
     @order_address = OrderAddress.new
   end
@@ -30,18 +30,20 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_address).permit(:postal_code, :prefecture, :city, :addresses, :building, :phone_number).merge(token: params[:token],user_id: current_user.id,item_id: params[:item_id])
+    params.require(:order_address).permit(:postal_code, :prefecture, :city, :addresses, :building, :phone_number).merge(
+      token: params[:token], user_id: current_user.id, item_id: params[:item_id]
+    )
   end
 
   def redirect_if_seller
     @item = Item.find(params[:item_id])
-    if user_signed_in? && current_user.id == @item.user_id
-      redirect_to root_path, alert: "You cannot purchase your own item."
-    end
+    return unless user_signed_in? && current_user.id == @item.user_id
+
+    redirect_to root_path, alert: 'You cannot purchase your own item.'
   end
-  
-  def pay_item 
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+
+  def pay_item
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: order_params[:token],
@@ -50,7 +52,6 @@ class OrdersController < ApplicationController
   end
 
   def set_public_key
-    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
   end
-
 end

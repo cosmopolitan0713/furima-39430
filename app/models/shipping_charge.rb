@@ -7,5 +7,4 @@ class ShippingCharge < ActiveHash::Base
   def fee
     charge
   end
-
 end
