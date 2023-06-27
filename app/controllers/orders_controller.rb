@@ -2,18 +2,14 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:new]
   before_action :redirect_if_seller, only: [:index, :new, :create]
   before_action :set_public_key, only: [:index, :new, :create]
+  
   def index
-    @item = Item.find(params[:item_id])
     if @item.user == current_user || @item.order.present?
       redirect_to root_path
     else
       @order = Order.new
       @order_address = OrderAddress.new
     end
-  end
-
-  def new
-    @order_address = OrderAddress.new
   end
 
   def create
