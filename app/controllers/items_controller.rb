@@ -13,33 +13,28 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      return redirect_to root_path
-    else
-      render 'new'
-    end
+    return redirect_to root_path if @item.save
+
+    render 'new'
   end
 
   def show
   end
 
   def edit
+    redirect_if_edit
   end
 
   def update
-    if @item.update(item_params)
-      return redirect_to item_path(@item)
-    else
-      render 'edit'
-    end
+    return redirect_to item_path(@item) if @item.update(item_params)
+
+    render 'edit'
   end
 
   def destroy
-    if @item.destroy
-      return redirect_to root_path
-    else
-      render 'show'
-    end
+    return redirect_to root_path if @item.destroy
+
+    render 'show'
   end
 
   private
@@ -64,5 +59,11 @@ class ItemsController < ApplicationController
 
   def redirect_to_show
     return redirect_to root_path if current_user.id != @item.user.id
+  end
+
+  def redirect_if_edit
+    return unless @item.order.present?
+
+    redirect_to root_path
   end
 end
