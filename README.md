@@ -38,8 +38,8 @@
 <!-- 購入記録 -->
 | Column  | Type       | Option                         | 
 | ------  | ---------- | ------------------------------ | 
-| users   | references | null: false, foreign_key: true | 
-| items   | references | null: false, foreign_key: true | 
+| user    | references | null: false, foreign_key: true | 
+| item    | references | null: false, foreign_key: true | 
 | address | references | null: false, foreign_key: true | 
 
 ### Association
@@ -47,7 +47,7 @@
 - belongs_to :item
 - has_one :address
 
-## addressテーブル 
+## addressesテーブル 
 <!-- 発送先情報 -->
 | Column        | Type       | Option                         | 
 | ------------- | ------     | ------------------------------ | 
@@ -57,7 +57,7 @@
 | addresses     | string     | null: false                    | 
 | building_name | string     |                                |  
 | phone_number  | string     | null: false                    | 
-| order        | references | null: false, foreign_key: true | 
+| order         | references | null: false, foreign_key: true | 
 
 ### Association
 - belongs_to :order

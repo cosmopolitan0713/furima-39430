@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
   end
 
   def redirect_if_edit
-    return unless user_signed_in? && current_user.id == @item.user_id && @item.order.present?
+    return unless @item.order.present?
 
     redirect_to root_path
   end
