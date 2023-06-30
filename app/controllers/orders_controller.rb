@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :redirect_if_seller, only: [:index, :create]
   before_action :set_public_key, only: [:index, :create]
 
@@ -33,7 +34,6 @@ class OrdersController < ApplicationController
   def redirect_if_seller
     @item = Item.find(params[:item_id])
     return unless current_user.id == @item.user_id
-
     redirect_to root_path, alert: 'You cannot purchase your own item.'
   end
 
