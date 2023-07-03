@@ -1,0 +1,80 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        date_of_birth: 生年月日
+        last_name: 苗字
+        first_name: 名前
+        last_name_kana: 苗字のフリガナ
+        first_name_kana: 名前のフリガナ          
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              invalid: "は文字と数字の両方を含めてください。"
+            last_name:
+              invalid: "は全角文字を入力してください。"
+            first_name:              
+              invalid: "は全角文字を入力してください。"
+            last_name_kana:            
+              invalid: "は全角カタカナの文字を入力してください。"
+            first_name_kana:              
+              invalid: "は全角カタカナの文字を入力してください。"
+
+  activerecord:
+    attributes:
+      item:
+        name: "商品名"
+        description: "商品の説明"
+        price: "販売価格"
+        image: "商品画像"
+        category_id: "カテゴリー"
+        condition_id: "商品の状態"
+        shipping_charge_id: "配送料の負担"
+        shipping_date_id: "発送までの日数"
+        prefecture_id: "発送元の地域"
+    errors:
+      models:
+        item:
+          attributes:
+            price:
+              blank: "を入力してください"
+              not_a_number: "は半角数字で入力してください"
+              not_an_integer: "は整数で入力してください"
+              greater_than_or_equal_to: "は300以上の値にしてください"
+              less_than_or_equal_to: "は9,999,999以下の値にしてください"
+            image:
+              blank: "を選択してください"        
+
+  activemodel:
+    models:
+      order_address: "注文住所"
+    attributes:
+      order_address:
+        token: "クレジットカード情報"
+        postal_code: "郵便番号"
+        prefecture: "都道府県"
+        city: "市区町村"
+        addresses: "番地"
+        building: "建物名"
+        phone_number: "電話番号"
+    errors:
+      models:
+        order_address:
+          attributes:
+            token:
+              blank: "を入力してください"
+            postal_code:
+              blank: "を入力してください"
+              invalid: "は、123-4567の形式で入力してください"
+            prefecture:
+              blank: "都道府県を選択してください"
+            city:
+              blank: "を入力してください"
+            addresses:
+              blank: "を入力してください"
+            phone_number:
+              blank: "を入力してください"
+              invalid: "が無効です"
