@@ -7,24 +7,7 @@ ja:
         last_name: 苗字
         first_name: 名前
         last_name_kana: 苗字のフリガナ
-        first_name_kana: 名前のフリガナ          
-    errors:
-      models:
-        user:
-          attributes:
-            password:
-              invalid: "は文字と数字の両方を含めてください。"
-            last_name:
-              invalid: "は全角文字を入力してください。"
-            first_name:              
-              invalid: "は全角文字を入力してください。"
-            last_name_kana:            
-              invalid: "は全角カタカナの文字を入力してください。"
-            first_name_kana:              
-              invalid: "は全角カタカナの文字を入力してください。"
-
-  activerecord:
-    attributes:
+        first_name_kana: 名前のフリガナ
       item:
         name: "商品名"
         description: "商品の説明"
@@ -34,9 +17,22 @@ ja:
         condition_id: "商品の状態"
         shipping_charge_id: "配送料の負担"
         shipping_date_id: "発送までの日数"
-        prefecture_id: "発送元の地域"
+        prefecture_id: "発送元の地域"  
+    
     errors:
       models:
+        user:
+          attributes:
+            password:
+              invalid: "は文字と数字の両方を含めてください。"
+            last_name:
+              invalid: "は全角文字を入力してください。"
+            first_name:
+              invalid: "は全角文字を入力してください。"
+            last_name_kana:
+              invalid: "は全角カタカナの文字を入力してください。"
+            first_name_kana:
+              invalid: "は全角カタカナの文字を入力してください。"
         item:
           attributes:
             price:
