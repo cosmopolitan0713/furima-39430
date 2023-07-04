@@ -1,0 +1,25 @@
+img {
+  height: 200px;
+  width: 200px;
+  /* 縦横比を保ったまま、画像を縦横100pxのサイズに収めるプロパティです */
+  object-fit: contain;
+}
+
+.other-images {
+  display: flex;
+}
+
+.other-image {
+  margin-right: 10px;
+}
+
+.image-delete-button {
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+}
+
+.item-box-img {
+  height: 200px;
+  width: 200px;
+}
