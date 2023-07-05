@@ -30,4 +30,5 @@ class Item < ApplicationRecord
     validates :shipping_date_id
     validates :prefecture_id
   end
+  
 end

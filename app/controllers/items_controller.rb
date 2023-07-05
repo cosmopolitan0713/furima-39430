@@ -36,12 +36,6 @@ class ItemsController < ApplicationController
 
     render 'show'
   end
-
-  def search
-    @q = Item.ransack(params[:q])
-    @items = @q.result
-  end
-
   private
 
   def item_params
