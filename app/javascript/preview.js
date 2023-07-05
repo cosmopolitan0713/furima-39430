@@ -22,6 +22,8 @@ document.addEventListener('turbo:load', function(){
     const previewImage = document.createElement('img');
     previewImage.setAttribute('class', 'preview-image');
     previewImage.setAttribute('src', blob);
+    previewImage.style.width = "200px"
+    previewImage.style.height ="200px"
 
     // 削除ボタンを生成
     const deleteButton = document.createElement("div");
@@ -107,4 +109,5 @@ document.addEventListener('turbo:load', function(){
    
   // input要素で値の変化が起きた際に呼び出される関数
   fileField.addEventListener('change', changedFileField);
+  
 });
